@@ -1,0 +1,116 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.body {
+  display: flex;
+  flex-direction: row;
+}
+
+.sideBar {
+  width: 200px;
+  padding: 10px;
+  border-right: 1px solid #111;
+  height: 100vh;
+  background: #000000;
+}
+
+.sideBarItem {
+  border: 1px solid #000;
+  border-radius: 3px;
+  height: 30px;
+  padding: 10px;
+  margin-top: 10px;
+  background: #ccc;
+}
+
+.page {
+  padding: 0 20px;
+  margin: 20px;
+  border: 1px solid green;
+}
+
+.dropZone {
+  height: 40px;
+}
+
+.dropZone:nth-of-type(2n) {
+  display: none;
+}
+
+.dropZone.horizontalDrag {
+  width: 40px;
+  height: auto;
+}
+
+.dropZone.active,
+.trashDropZone.active {
+  background: #00a2ff;
+  transition: 100ms all;
+}
+
+.component {
+  height: 60px;
+  padding: 10px;
+  background: #aaa;
+}
+
+.column {
+  border: 1px solid blue;
+  flex: 1 1 100%;
+  padding: 10px;
+}
+
+.columns {
+  display: flex;
+  padding: 20px 0;
+}
+
+.columnContainer {
+  display: flex;
+}
+
+.base {
+  padding: 0.5rem 1rem;
+  background-color: white;
+  cursor: move;
+}
+
+.row {
+  border: 1px solid red;
+  padding: 0;
+}
+
+.trashDropZone {
+  position: relative;
+  text-align: center;
+  padding: 20px 0;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  border: 1px solid purple;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pageContainer {
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  margin-bottom: 100px;
+}
+
+/* //////////////////////////////styles */
+
+/* examples/custom-styling.css */
+.customOverlay {
+  background: rgba(36, 123, 160, 0.7);
+}
+.customModal {
+  background: #b2dbbf;
+  max-width: 500px;
+  width: 100%;
+}
