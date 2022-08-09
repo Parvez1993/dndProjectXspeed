@@ -46,8 +46,6 @@ const Container = () => {
     setResult(JSON.stringify(layout, null, layout.length));
   }, [setLayout, layout]);
 
-  console.log("opoooooooooooooooooooooooooooooooo", layout);
-
   const handleDrop = useCallback(
     (dropZone, item) => {
       console.log("dropZone", dropZone);
@@ -127,7 +125,6 @@ const Container = () => {
   );
 
   const renderRow = (row, currentPath, layoutRender) => {
-    console.log("rowwwwwwwwwwwwwwww", row);
     return (
       <Row
         key={row.id}
@@ -195,9 +192,10 @@ const Container = () => {
           />
         </div>
       </div>
-      <div>
-        <h3>{result}</h3>
+      <div className="out_box">
+        <div className="result">{result}</div>
       </div>
+      lo
     </>
   );
 };

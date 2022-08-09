@@ -7,8 +7,7 @@ import Column from "./Column";
 const style = {};
 const Row = ({ data, components, handleDrop, path, layoutRender }) => {
   let empty = [];
-  console.log("layoutRender", layoutRender);
-  console.log("data", data.children);
+
   const ref = useRef(null);
 
   const [{ isDragging }, drag] = useDrag({

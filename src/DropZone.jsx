@@ -9,14 +9,14 @@ const DropZone = ({ data, onDrop, isLast, className }) => {
   const [{ isOver, canDrop }, drop] = useDrop({
     accept: ACCEPTS,
     drop: (item, monitor) => {
-      console.log("on drop", item);
+      // console.log("on drop", item);
       onDrop(data, item);
     },
     canDrop: (item, monitor) => {
       const dropZonePath = data.path;
       const splitDropZonePath = dropZonePath.split("-");
       const itemPath = item.path;
-      console.log(dropZonePath, splitDropZonePath, itemPath);
+      // console.log(dropZonePath, splitDropZonePath, itemPath);
       // sidebar items can always be dropped anywhere
       if (!itemPath) {
         // if (data.childrenCount >= 3) {

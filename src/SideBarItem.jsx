@@ -11,7 +11,6 @@ const SideBarItem = ({ data }) => {
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
-  console.log("data....", data);
   const [{ opacity }, drag] = useDrag({
     item: data,
     collect: (monitor) => ({
