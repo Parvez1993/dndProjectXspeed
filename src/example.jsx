@@ -193,7 +193,7 @@ const Container = () => {
         </div>
       </div>
       <div className="out_box">
-        <div className="result">{result}</div>
+        <pre className="result">{result}</pre>
       </div>
       lo
     </>
