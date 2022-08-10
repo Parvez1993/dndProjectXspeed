@@ -93,15 +93,3 @@ const Column = ({ data, components, handleDrop, path }) => {
   );
 };
 export default Column;
-
-{
-  /* <Resizable height={height} width={width} onResize={onResize}>
-  <div
-    className="box"
-    style={{
-      width: width + "px",
-      height: height + "px",
-    }}
-  ></div>
-</Resizable>; */
-}
