@@ -18,7 +18,6 @@ import {
   COMPONENT,
   COLUMN,
   ROW,
-  COLUMNs,
 } from "./constants";
 import shortid from "shortid";
 import { useEffect } from "react";
