@@ -3,10 +3,13 @@ import { useDrag } from "react-dnd";
 import { ROW } from "./constants";
 import DropZone from "./DropZone";
 import Column from "./Column";
+import { useDndContext } from "./Contextapi";
 
 const style = {};
 const Row = ({ data, components, handleDrop, path, layoutRender }) => {
   let empty = [];
+
+  const { onOpenModal, setId } = useDndContext();
 
   const ref = useRef(null);
 
@@ -46,7 +49,16 @@ const Row = ({ data, components, handleDrop, path, layoutRender }) => {
   };
 
   return (
-    <div ref={ref} style={{ ...style, opacity }} className="base draggable row">
+    <div
+      ref={ref}
+      style={{ ...style, opacity }}
+      className="base draggable row"
+      onClick={(e) => {
+        e.stopPropagation();
+        onOpenModal();
+        setId(data.id);
+      }}
+    >
       {data.id}
       <div className="columns">
         {data.children.map((column, index) => {

@@ -4,9 +4,11 @@ import { COLUMN } from "./constants";
 import DropZone from "./DropZone";
 import Component from "./Component";
 import ResizePanel from "react-resize-panel";
+import { useDndContext } from "./Contextapi";
 
 const style = {};
 const Column = ({ data, components, handleDrop, path }) => {
+  const { onOpenModal, setId } = useDndContext();
   const [width, setWidth] = useState("100%");
   const [height, setHeight] = useState("100%");
   // On top layout
@@ -50,6 +52,11 @@ const Column = ({ data, components, handleDrop, path }) => {
           ref={ref}
           style={{ ...style, opacity }}
           className="base draggable column"
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpenModal();
+            setId(data.id);
+          }}
         >
           {data.id}
           {data.children.map((component, index) => {

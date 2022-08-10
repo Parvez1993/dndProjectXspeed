@@ -22,6 +22,7 @@ import {
 } from "./constants";
 import shortid from "shortid";
 import { useEffect } from "react";
+import MyModal from "./MyModal";
 
 const Container = () => {
   const initialLayout = initialData.layout; // this is the very first initial layout
@@ -145,6 +146,7 @@ const Container = () => {
   // causes this issue - https://github.com/react-dnd/react-dnd/issues/342
   return (
     <>
+      <MyModal />
       <div className="body">
         <div className="sideBar">
           {Object.values(SIDEBAR_ITEMS).map((sideBarItem, index) => (

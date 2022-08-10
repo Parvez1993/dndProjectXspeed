@@ -5,14 +5,19 @@ import { DndProvider } from "react-dnd";
 import Backend from "react-dnd-html5-backend";
 
 import "./styles.css";
+import { DndContextProvider } from "./Contextapi";
 
 function App() {
   return (
-    <div className="App">
-      <DndProvider backend={Backend}>
-        <Example />
-      </DndProvider>
-    </div>
+    <>
+      <DndContextProvider>
+        <div className="App">
+          <DndProvider backend={Backend}>
+            <Example />
+          </DndProvider>
+        </div>
+      </DndContextProvider>
+    </>
   );
 }
 
