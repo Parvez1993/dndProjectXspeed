@@ -198,12 +198,15 @@ export const handleMoveSidebarComponentIntoParent = (
   let newLayoutStructure;
   switch (splitDropZonePath.length) {
     case 1: {
+      //if my type is ROW which i move into parent then the children should be empty
       if (item.type === ROW) {
         newLayoutStructure = {
           type: ROW,
           id: shortid.generate(),
           children: [],
         };
+
+        //if my type is ROW which i move into parent then the children should contain data
       } else {
         newLayoutStructure = {
           type: ROW,
@@ -213,17 +216,27 @@ export const handleMoveSidebarComponentIntoParent = (
           ],
         };
       }
+      break;
     }
     case 2: {
+      //if my type is COLUMN which i move into parent then the children should be empty
       if (item.type === COLUMN) {
         newLayoutStructure = {
           type: COLUMN,
           id: shortid.generate(),
-          children: [{ type: COLUMN, id: shortid.generate(), children: [] }],
+        };
+        //if my type is COLUMN which i move into parent then the children should contain data
+      } else {
+        newLayoutStructure = {
+          type: COLUMN,
+          id: shortid.generate(),
+          children: [item],
         };
       }
+
       break;
     }
+
     default: {
       newLayoutStructure = item;
     }
