@@ -51,8 +51,7 @@ export const SIDEBAR_ITEMS = [
     type: SIDEBAR_ITEM,
     component: {
       type: "row",
-      id: "row8",
-      children: [],
+      content: "row generated",
     },
   },
   {
@@ -62,13 +61,5 @@ export const SIDEBAR_ITEMS = [
       type: "column",
       content: "Some column",
     },
-  },
-];
-
-export const COLUMNs = [
-  {
-    id: shortid.generate(),
-    type: COLUMN,
-    children: [],
   },
 ];

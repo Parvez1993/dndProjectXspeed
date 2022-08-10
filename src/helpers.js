@@ -112,6 +112,7 @@ export const handleMoveWithinParent = (
 
 export const handleAddColumDataToRow = (layout) => {
   const layoutCopy = [...layout];
+
   const COLUMN_STRUCTURE = {
     type: COLUMN,
     id: shortid.generate(),
@@ -197,19 +198,30 @@ export const handleMoveSidebarComponentIntoParent = (
   let newLayoutStructure;
   switch (splitDropZonePath.length) {
     case 1: {
-      newLayoutStructure = {
-        type: ROW,
-        id: shortid.generate(),
-        children: [{ type: COLUMN, id: shortid.generate(), children: [item] }],
-      };
-      break;
+      if (item.type === ROW) {
+        newLayoutStructure = {
+          type: ROW,
+          id: shortid.generate(),
+          children: [],
+        };
+      } else {
+        newLayoutStructure = {
+          type: ROW,
+          id: shortid.generate(),
+          children: [
+            { type: COLUMN, id: shortid.generate(), children: [item] },
+          ],
+        };
+      }
     }
     case 2: {
-      newLayoutStructure = {
-        type: COLUMN,
-        id: shortid.generate(),
-        children: [item],
-      };
+      if (item.type === COLUMN) {
+        newLayoutStructure = {
+          type: COLUMN,
+          id: shortid.generate(),
+          children: [{ type: COLUMN, id: shortid.generate(), children: [] }],
+        };
+      }
       break;
     }
     default: {

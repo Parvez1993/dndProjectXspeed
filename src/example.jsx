@@ -49,9 +49,6 @@ const Container = () => {
 
   const handleDrop = useCallback(
     (dropZone, item) => {
-      console.log("dropZone", dropZone);
-      console.log("item", item);
-
       const splitDropZonePath = dropZone.path.split("-");
       const pathToDropZone = splitDropZonePath.slice(0, -1).join("-");
 
@@ -62,6 +59,51 @@ const Container = () => {
 
       // sidebar into
       if (item.type === SIDEBAR_ITEM) {
+        if (item.component.type === ROW) {
+          const newComponent = {
+            id: shortid.generate(),
+            ...item.component,
+          };
+          const newItem = {
+            id: newComponent.id,
+            type: ROW,
+          };
+          setComponents({
+            ...components,
+            [newComponent.id]: newComponent,
+          });
+          setLayout(
+            handleMoveSidebarComponentIntoParent(
+              layout,
+              splitDropZonePath,
+              newItem
+            )
+          );
+          return;
+        }
+
+        if (item.component.type === COLUMN) {
+          const newComponent = {
+            id: shortid.generate(),
+            ...item.component,
+          };
+          const newItem = {
+            id: newComponent.id,
+            type: COLUMN,
+          };
+          setComponents({
+            ...components,
+            [newComponent.id]: newComponent,
+          });
+          setLayout(
+            handleMoveSidebarComponentIntoParent(
+              layout,
+              splitDropZonePath,
+              newItem
+            )
+          );
+          return;
+        }
         // 1. Move sidebar item into page
         const newComponent = {
           id: shortid.generate(),
@@ -157,8 +199,6 @@ const Container = () => {
           <div className="page">
             {layout.map((row, index) => {
               const currentPath = `${index}`;
-
-              console.log("renderow", row, "currentPath", currentPath); //render the rows and its children ........... current path is 0 1  in since two rows
 
               const layoutRender = true;
               return (

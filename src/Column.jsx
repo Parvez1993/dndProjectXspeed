@@ -9,13 +9,9 @@ import { useDndContext } from "./Contextapi";
 const style = {};
 const Column = ({ data, components, handleDrop, path }) => {
   const { onOpenModal, setId } = useDndContext();
-  const [width, setWidth] = useState("100%");
-  const [height, setHeight] = useState("100%");
-  // On top layout
-  let onResize = (event, { element, size, handle }) => {
-    setWidth(size.width);
-    setHeight(size.height);
-  };
+
+  let width = "100%";
+  let height = "100%";
 
   const ref = useRef(null);
 
@@ -85,8 +81,8 @@ const Column = ({ data, components, handleDrop, path }) => {
           })}
           <DropZone
             data={{
-              path: `${path}-${data.children.length}`,
-              childrenCount: data.children.length,
+              path: `${path}-${data.children ? data.children.length : ""}`,
+              childrenCount: `${data.children ? data.children.length : ""}`,
             }}
             onDrop={handleDrop}
             isLast

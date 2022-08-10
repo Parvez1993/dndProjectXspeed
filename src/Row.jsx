@@ -29,7 +29,6 @@ const Row = ({ data, components, handleDrop, path, layoutRender }) => {
   drag(ref);
 
   const renderColumn = (column, currentPath) => {
-    console.log("column", column);
     return (
       <>
         {" "}
@@ -61,27 +60,29 @@ const Row = ({ data, components, handleDrop, path, layoutRender }) => {
     >
       {data.id}
       <div className="columns">
-        {data.children.map((column, index) => {
-          const currentPath = `${path}-${index}`;
+        {data.children
+          ? data.children.map((column, index) => {
+              const currentPath = `${path}-${index}`;
 
-          return (
-            <React.Fragment key={column.id}>
-              <DropZone
-                data={{
-                  path: currentPath,
-                  childrenCount: data.children.length,
-                }}
-                onDrop={handleDrop}
-                className="horizontalDrag"
-              />
-              {renderColumn(column, currentPath)}
-            </React.Fragment>
-          );
-        })}
+              return (
+                <React.Fragment key={column.id}>
+                  <DropZone
+                    data={{
+                      path: currentPath,
+                      childrenCount: data.children.length,
+                    }}
+                    onDrop={handleDrop}
+                    className="horizontalDrag"
+                  />
+                  {renderColumn(column, currentPath)}
+                </React.Fragment>
+              );
+            })
+          : ""}
         <DropZone
           data={{
-            path: `${path}-${data.children.length}`,
-            childrenCount: data.children.length,
+            path: `${path}-${data.children && data.children.length}`,
+            childrenCount: `${data.children && data.children.length}`,
           }}
           onDrop={handleDrop}
           className="horizontalDrag"
