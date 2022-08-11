@@ -207,7 +207,7 @@ export const handleMoveSidebarComponentIntoParent = (
           children: [],
         };
 
-        //if my type is ROW which i move into parent then the children should contain data
+        //else i move into parent then the children should contain data
       } else {
         newLayoutStructure = {
           type: ROW,
@@ -225,7 +225,7 @@ export const handleMoveSidebarComponentIntoParent = (
           id: shortid.generate(),
           children: [],
         };
-        //if my type is COLUMN which i move into parent then the children should contain data
+        //else i move into parent then the children should contain data
       } else {
         newLayoutStructure = {
           type: COLUMN,
